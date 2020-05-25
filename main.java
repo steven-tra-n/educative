@@ -5,6 +5,6 @@ public class main {
         int[] arr = {2, 1, 5, 1, 3, 2};
         int k = 3;
 
-        System.out.println(SlidingWindow.MaxSumSubArrayOfSizeK.findMaxSumSubArray(k, arr));
+        System.out.println(SlidingWindow.MaxSumSubArrayOfSizeK.findMaxSumSubArray1(k, arr));
     };
 };
