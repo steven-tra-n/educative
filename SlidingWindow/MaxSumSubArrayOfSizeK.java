@@ -2,8 +2,6 @@ package SlidingWindow;
 
 public class MaxSumSubArrayOfSizeK {
   public static int findMaxSumSubArray(int k, int[] arr) {
-    // TODO: Write your code here
-
     int sum = 0;
     int maxSum = 0;
 
@@ -23,8 +21,6 @@ public class MaxSumSubArrayOfSizeK {
   };
 
   public static int findMaxSumSubArray1(int k, int[] arr) {
-    // TODO: Write your code here
-
     int sum = 0;
     int maxSum = 0;
     int windowStart = 0;
