@@ -2,9 +2,8 @@ import SlidingWindow.*;
 
 public class main {
     public static void main(String[] args){
-        // System.out.println("Length of the longest substring: " + NoRepeatSubstring.findLength("aabccbb"));
-        // System.out.println("Length of the longest substring: " + NoRepeatSubstring.findLength("abbbb"));
-        // System.out.println("Length of the longest substring: " + NoRepeatSubstring.findLength("abccde"));
-        System.out.println("Length of the longest substring: " + NoRepeatSubstring.findLength("abcba"));
+        System.out.println(CharacterReplacement.findLength("aabccbb", 2));
+        System.out.println(CharacterReplacement.findLength("abbcb", 1));
+        System.out.println(CharacterReplacement.findLength("abccde", 1));
     };
 };
