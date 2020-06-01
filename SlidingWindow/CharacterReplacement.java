@@ -1,8 +1,5 @@
 package SlidingWindow;
-
 import java.util.HashMap;
-
-import sun.nio.ch.WindowsSelectorProvider;
 
 public class CharacterReplacement {
     public static int findLength(String str, int k) {
