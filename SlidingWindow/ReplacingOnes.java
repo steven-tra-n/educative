@@ -25,4 +25,28 @@ public class ReplacingOnes {
 
         return maxLength;
     };
+    
+    public static int findLength1(int[] arr, int k) {
+        int maxLength = Integer.MIN_VALUE;
+        int onesCount = 0;
+        int windowStart = 0;
+
+        for(int windowEnd = 0; windowEnd < arr.length; windowEnd++){
+            if(arr[windowEnd] == 1){
+                onesCount++; // One is found, so increment
+            };
+
+            if(((windowEnd - windowStart) + 1) - onesCount > k){ // Window size minus onesCount is bigger than allowed limit
+                if(arr[windowStart] == 1){
+                    onesCount--; // Since left window is sliding up, onesCount is decremented if the first in on the left is a 1
+                };
+
+                windowStart++; // Slide the left window up
+            };
+
+            maxLength = Math.max(maxLength, (windowEnd - windowStart) + 1);
+        };
+
+        return maxLength;
+    };
 };
