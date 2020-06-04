@@ -2,7 +2,9 @@ import SlidingWindow.*;
 
 public class main {
     public static void main(String[] args){
-        System.out.println(ReplacingOnes.findLength1(new int[] { 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1 }, 2));
-        System.out.println(ReplacingOnes.findLength1(new int[] { 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1 }, 3));
+        System.out.println("Permutation exist: " + StringPermutation.findPermutation("oidbcaf", "abc"));
+        System.out.println("Permutation exist: " + StringPermutation.findPermutation("odicf", "dc"));
+        System.out.println("Permutation exist: " + StringPermutation.findPermutation("bcdxabcdy", "bcdyabcdx"));
+        System.out.println("Permutation exist: " + StringPermutation.findPermutation("aaacb", "abc"));
     };
 };

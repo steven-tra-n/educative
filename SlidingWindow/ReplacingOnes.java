@@ -50,3 +50,6 @@ public class ReplacingOnes {
         return maxLength;
     };
 };
+
+// System.out.println(ReplacingOnes.findLength1(new int[] { 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1 }, 2));
+// System.out.println(ReplacingOnes.findLength1(new int[] { 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1 }, 3));
