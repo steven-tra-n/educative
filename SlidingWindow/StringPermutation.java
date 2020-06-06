@@ -51,10 +51,10 @@ public class StringPermutation {
             char rightChar = str.charAt(windowEnd);
 
             if(charFrequency.containsKey(rightChar)){
-                charFrequency.put(rightChar, charFrequency.get(rightChar) - 1);
+                charFrequency.put(rightChar, charFrequency.get(rightChar) - 1); // Decrement char in map if found
 
                 if(charFrequency.get(rightChar) == 0){
-                    matched++;
+                    matched++; // Keep track of chars found
                 };
             };
 
@@ -62,10 +62,8 @@ public class StringPermutation {
                 return true;
             };
 
-            if(windowEnd > pattern.length() - 1){ // Means str is now longer than pattern
-                windowStart++; // Shrink window
-
-                char leftChar = str.charAt(windowStart);
+            if(windowEnd >= pattern.length() - 1){ // Means str is now longer than pattern
+                char leftChar = str.charAt(windowStart++); // Check char at windowStart before incrementing 
                 if(charFrequency.containsKey(leftChar)){
                     if(charFrequency.get(leftChar) == 0){
                         matched--; // Decrement since we are putting this char back into the map
