@@ -21,7 +21,7 @@ public class StringAnagrams {
             char rightChar = str.charAt(windowEnd);
 
             if(charFrequencies.containsKey(rightChar)){
-                charFrequencies.put(rightChar, -1); // Decrement char
+                charFrequencies.put(rightChar, charFrequencies.get(rightChar) - 1); // Decrement char
 
                 if(charFrequencies.get(rightChar) == 0){
                     matched++; // Keep track of matched chars
@@ -50,3 +50,6 @@ public class StringAnagrams {
         return resultIndices;
       };
 };
+
+// System.out.println(StringAnagrams.findStringAnagrams("ppqp", "pq"));
+// System.out.println(StringAnagrams.findStringAnagrams("abbcabc", "abc"));
