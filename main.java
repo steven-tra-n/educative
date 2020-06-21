@@ -1,9 +1,12 @@
+import java.util.List;
+
 import SlidingWindow.*;
 
 public class main {
     public static void main(String[] args){
-        System.out.println(MinimumWindowSubstring.findSubstring("aabdec", "abc"));
-        System.out.println(MinimumWindowSubstring.findSubstring("abdabca", "abc"));
-        System.out.println(MinimumWindowSubstring.findSubstring("adcad", "abc"));
+        List<Integer> result = WordConcatenation.findWordConcatenation("catfoxcat", new String[] { "cat", "fox" });
+        System.out.println(result);
+        result = WordConcatenation.findWordConcatenation("catcatfoxfox", new String[] { "cat", "fox" });
+        System.out.println(result);
     };
 };
