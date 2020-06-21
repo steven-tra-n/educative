@@ -31,12 +31,12 @@ public class WordConcatenation {
     
             if (j + 1 == wordsCount) // store index if we have found all the words
               resultIndices.add(i);
-          }
-        }
+          };
+        };
         
         return resultIndices;
-    }
-}
+    };
+};
 
 // List<Integer> result = WordConcatenation.findWordConcatenation("catfoxcat", new String[] { "cat", "fox" });
 // System.out.println(result);
