@@ -2,6 +2,26 @@ package TwoPointers;
 
 public class SortedArraySquares {
     public static int[] makeSquares(int[] arr) {
+        int[] result = new int[arr.length];
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left <= right){
+            if (Math.abs(arr[left]) < Math.abs(arr[right]))
+            {
+                result[right - left] = arr[right] * arr[right];
+                right--;
+            } else {
+                result[right - left] = arr[left] * arr[left];
+                left++;
+            };
+        };
+        
+        return result;
+    };
+
+    
+    public static int[] makeSquares1(int[] arr) {
         int length = arr.length;
         int[] result = new int[length];
         int left = 0;
