@@ -9,7 +9,7 @@ public class LinkedListCycle {
         fast = fast.next.next;
         slow = slow.next;
 
-        if(fast == slow){
+        if(fast == slow){ // Pointers have caught up with each other
             return true;
         };
       };
