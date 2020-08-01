@@ -12,13 +12,13 @@ public class LinkedListCycleLength {
             slow = slow.next;
 
             if(fast == slow){
-                cycleStart = slow;
+                cycleStart = slow; // Find an arbitrary intersecting point in the linked list
                 break;
             };
         };
 
         do{
-            cycleStart = cycleStart.next;
+            cycleStart = cycleStart.next; // Move one node ahead and then loop to find length
             cycleCounter++;
         } while(cycleStart != slow);
 

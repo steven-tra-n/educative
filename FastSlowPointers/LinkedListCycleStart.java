@@ -19,18 +19,18 @@ public class LinkedListCycleStart {
 
         do{
             cycleStart = cycleStart.next;
-            cycleCounter++;
+            cycleCounter++; // Count cycle length
         } while(cycleStart != slow);
 
-        slow = fast = head;
+        slow = fast = head; // Reset both pointers
 
         for(int i = 0; i < cycleCounter; i++){
-            fast = fast.next;
+            fast = fast.next; // Increment pointer by cycle length so the pointer is now somewhere inside the cycle
         };
 
         while(fast != slow){
-            fast = fast.next;
-            slow = slow.next;
+            fast = fast.next; // Increment both pointers by one. Since there is a cycle, they will eventually run into each other
+            slow = slow.next; // Since they are incremented by one, they can only meet at the start of the cycle
         };
 
         return slow;
