@@ -30,6 +30,19 @@ public class PalindromicLinkedList {
 
         return firstHalf.toString().equals(secondHalf.toString());
     };
+
+    private ListNode reverse(ListNode head){
+        ListNode prev = null; // End of list
+
+        while(head != null){ // We want to point the head of the list to the end. Stop iterating when it reaches the end
+            ListNode next = head.next;  // Temporarily store head.next
+            head.next = prev; // Connect head.next to the end of the list
+            prev = head;
+            head = next;
+        };
+
+        return head;
+    };
 };
 
 // ListNode head = new ListNode(2);
