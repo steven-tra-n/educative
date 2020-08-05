@@ -6,17 +6,16 @@ public class PalindromicLinkedList {
         // String firstHalf = "", secondHalf = "";
         StringBuilder firstHalf = new StringBuilder();
         StringBuilder secondHalf = new StringBuilder();
-        int listCount = 0;
 
         while(fast != null && fast.next != null){
             firstHalf.append(slow.value);
             slow = slow.next;
             fast = fast.next.next;
-            listCount++;
         };
 
-        System.out.println(firstHalf);
-        slow = slow.next;
+        if(fast != null){ // List length is odd, so we should skip over the middle node
+            slow = slow.next;
+        };
 
         while(slow != null){
             secondHalf.append(slow.value);
