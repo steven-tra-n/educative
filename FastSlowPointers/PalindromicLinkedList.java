@@ -13,6 +13,8 @@ public class PalindromicLinkedList {
             fast = fast.next.next;
         };
 
+        reverse(slow);
+
         if(fast != null){ // List length is odd, so we should skip over the middle node
             slow = slow.next;
         };
@@ -30,14 +32,14 @@ public class PalindromicLinkedList {
         return firstHalf.toString().equals(secondHalf.toString());
     };
 
-    private ListNode reverse(ListNode head){
+    private static ListNode reverse(ListNode head){
         ListNode prev = null; // End of list
 
         while(head != null){ // We want to point the head of the list to the end. Stop iterating when it reaches the end
-            ListNode next = head.next;  // Temporarily store head.next
-            head.next = prev; // Connect head.next to the end of the list
-            prev = head;
-            head = next;
+            ListNode next = head.next;  // Shift next one node over from head
+            head.next = prev; // Disconnect head.next and connect to end of list initially 
+            prev = head; // prev will connect head towards the end of the list
+            head = next; // Shift head foward one node
         };
 
         return head;
