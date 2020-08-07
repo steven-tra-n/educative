@@ -1,7 +1,5 @@
 package TwoPointers;
 
-import java.util.Arrays;
-
 public class TripletWithSmallerSum {
     public static int searchTriplets(int[] arr, int target) {
         int count = 0;
