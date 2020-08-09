@@ -15,18 +15,28 @@ public class RearrangeList {
         startSecondHalf = reverse(slow);
 
         while(startSecondHalf != null){
+            ListNode temp = startFirstHalf.next;
+            startFirstHalf.next = startSecondHalf;
+            startFirstHalf = temp;
 
+            temp = startSecondHalf.next;
+            startSecondHalf.next = startFirstHalf;
+            startSecondHalf = temp;
+        };
+
+        if(startFirstHalf != null){
+            startFirstHalf.next = null;
         };
     };
 
-    private static ListNode reverse(ListNode head){
+    private static ListNode reverse(ListNode node){
         ListNode prev = null; // End of list;
 
-        while(head != null){
-            ListNode next = head.next; // Save connection since we will soon disconnect head.next
-            head.next = prev; // Disconnect and attach to end of list initially
-            prev = head; // Connect head towards end of list
-            head = next; // Advance one node
+        while(node != null){
+            ListNode next = node.next; // Save connection since we will soon disconnect head.next
+            node.next = prev; // Disconnect and attach to end of list initially
+            prev = node; // Connect head towards end of list
+            node = next; // Advance one node
         };
 
         return prev;
