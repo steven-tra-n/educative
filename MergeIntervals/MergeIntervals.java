@@ -15,14 +15,12 @@ public class MergeIntervals {
 
         Collections.sort(intervals, (a, b) -> Integer.compare(a.start, b.start));
 
-        // Loop through and find the lowest value when comparing two intervals
-        
         Iterator<Interval> intervalItr = intervals.iterator();
         Interval interval = intervalItr.next(); // Fetch first interval
         int start = interval.start; // Initial start and end
         int end = interval.end;
 
-        while(intervalItr.hasNext()){
+        while(intervalItr.hasNext()){ // Loop through and find the lowest value when comparing two intervals
             interval = intervalItr.next();
 
             if(interval.start <= end){ // Overlap found
@@ -30,13 +28,41 @@ public class MergeIntervals {
             } else{
                 mergedIntervals.add(new Interval(start, end)); // No overlap, add previous interval
 
-                start = interval.start; // Reset placeholders
+                start = interval.start; // Reset placeholders to previous interval
                 end = interval.end;
             };
         };
 
-        mergedIntervals.add(new Interval(start, end)); // Add last interval
+        mergedIntervals.add(new Interval(start, end)); // Add last interval, since while loop does not account for last interval
 
         return mergedIntervals;
     };
 };
+
+// List<Interval> input = new ArrayList<Interval>();
+//     input.add(new Interval(1, 4));
+//     input.add(new Interval(2, 5));
+//     input.add(new Interval(7, 9));
+//     System.out.print("Merged intervals: ");
+//     for (Interval interval : MergeIntervals.merge(input))
+//       System.out.print("[" + interval.start + "," + interval.end + "] ");
+//     System.out.println();
+
+//     input = new ArrayList<Interval>();
+//     input.add(new Interval(6, 7));
+//     input.add(new Interval(2, 4));
+//     input.add(new Interval(5, 9));
+//     System.out.print("Merged intervals: ");
+//     for (Interval interval : MergeIntervals.merge(input))
+//       System.out.print("[" + interval.start + "," + interval.end + "] ");
+//     System.out.println();
+
+//     input = new ArrayList<Interval>();
+//     input.add(new Interval(1, 4));
+//     input.add(new Interval(2, 6));
+//     input.add(new Interval(3, 5));
+//     System.out.print("Merged intervals: ");
+//     for (Interval interval : MergeIntervals.merge(input))
+//       System.out.print("[" + interval.start + "," + interval.end + "] ");
+//     System.out.println();
+//     };

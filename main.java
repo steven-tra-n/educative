@@ -5,32 +5,30 @@ import MergeIntervals.*;
 
 public class main {
     public static void main(String[] args){
-        
-    List<Interval> input = new ArrayList<Interval>();
-    input.add(new Interval(1, 4));
-    input.add(new Interval(2, 5));
-    input.add(new Interval(7, 9));
-    System.out.print("Merged intervals: ");
-    for (Interval interval : MergeIntervals.merge(input))
-      System.out.print("[" + interval.start + "," + interval.end + "] ");
-    System.out.println();
+      List<Interval> input = new ArrayList<Interval>();
+      input.add(new Interval(1, 3));
+      input.add(new Interval(5, 7));
+      input.add(new Interval(8, 12));
+      System.out.print("Intervals after inserting the new interval: ");
+      for (Interval interval : InsertInterval.insert(input, new Interval(4, 6)))
+        System.out.print("[" + interval.start + "," + interval.end + "] ");
+      System.out.println();
 
-    input = new ArrayList<Interval>();
-    input.add(new Interval(6, 7));
-    input.add(new Interval(2, 4));
-    input.add(new Interval(5, 9));
-    System.out.print("Merged intervals: ");
-    for (Interval interval : MergeIntervals.merge(input))
-      System.out.print("[" + interval.start + "," + interval.end + "] ");
-    System.out.println();
+      input = new ArrayList<Interval>();
+      input.add(new Interval(1, 3));
+      input.add(new Interval(5, 7));
+      input.add(new Interval(8, 12));
+      System.out.print("Intervals after inserting the new interval: ");
+      for (Interval interval : InsertInterval.insert(input, new Interval(4, 10)))
+        System.out.print("[" + interval.start + "," + interval.end + "] ");
+      System.out.println();
 
-    input = new ArrayList<Interval>();
-    input.add(new Interval(1, 4));
-    input.add(new Interval(2, 6));
-    input.add(new Interval(3, 5));
-    System.out.print("Merged intervals: ");
-    for (Interval interval : MergeIntervals.merge(input))
-      System.out.print("[" + interval.start + "," + interval.end + "] ");
-    System.out.println();
+      input = new ArrayList<Interval>();
+      input.add(new Interval(2, 3));
+      input.add(new Interval(5, 7));
+      System.out.print("Intervals after inserting the new interval: ");
+      for (Interval interval : InsertInterval.insert(input, new Interval(1, 4)))
+        System.out.print("[" + interval.start + "," + interval.end + "] ");
+      System.out.println();
     };
 };
