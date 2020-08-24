@@ -1,8 +1,10 @@
 package MergeIntervals;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class MinimumMeetingRooms {
     public static int findMinimumMeetingRooms(List<Meeting> meetings) {
@@ -39,6 +41,30 @@ public class MinimumMeetingRooms {
         // all active meeting are in the minHeap, so we need rooms for all of them.
         minRooms = Math.max(minRooms, minHeap.size());
         }
+        return minRooms;
+    };
+
+    public static int findMinimumMeetingRooms2(List<Meeting> meetings) {
+        if(meetings == null || meetings.size() == 0){
+            return 0;
+        };
+
+        // Sort by start stime
+        Collections.sort(meetings, (a, b) -> Integer.compare(a.start, b.start));
+
+        int minRooms = 0;
+        Queue<Meeting> meetingQueue = new LinkedList<>();
+
+        for(Meeting meeting : meetings){
+            while(!meetingQueue.isEmpty() && meeting.start >= meetingQueue.peek().end){ // Remove meeting that ends same time current meeting started
+                meetingQueue.poll();
+            };
+
+            meetingQueue.add(meeting);
+
+            minRooms = Math.max(minRooms, meetingQueue.size());
+        };
+
         return minRooms;
     };
 };
