@@ -44,12 +44,12 @@ public class MinimumMeetingRooms {
         return minRooms;
     };
 
-    public static int findMinimumMeetingRooms2(List<Meeting> meetings) {
+    public static int findMinimumMeetingRooms2(List<Meeting> meetings) { // Does not work. Needs to be priority queue
         if(meetings == null || meetings.size() == 0){
             return 0;
         };
 
-        // Sort by start stime
+        // Sort by start time
         Collections.sort(meetings, (a, b) -> Integer.compare(a.start, b.start));
 
         int minRooms = 0;
