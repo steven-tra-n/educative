@@ -40,6 +40,27 @@ public class MaxSumSubArrayOfSizeK {
 
     return maxSum;
   };
+
+  public static int findMaxSumSubArray2(int k, int[] arr) {
+    int sum = 0;
+    int max = 0;
+    int windowStart = 0;
+
+    for(int windowEnd = 0; windowEnd < arr.length; windowEnd++){
+      sum += arr[windowEnd];
+
+      if(windowEnd >= k - 1){
+        if(sum > max){
+          max = sum;
+        };
+
+        sum -= arr[windowStart];
+        windowStart++;
+      };
+    };
+
+    return max;
+  };
 };
 
 // System.out.println("Maximum sum of a subarray of size K: "
