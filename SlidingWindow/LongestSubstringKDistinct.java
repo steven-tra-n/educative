@@ -1,5 +1,5 @@
 package SlidingWindow;
-import java.util.*;
+import java.util.HashMap;
 
 public class LongestSubstringKDistinct {
     public static int findLength(String str, int k) {
@@ -24,6 +24,44 @@ public class LongestSubstringKDistinct {
             };
 
             maxLength = Math.max(maxLength, (windowEnd - windowStart) + 1);
+        };
+
+        return maxLength;
+    };
+    
+    public static int findLength2(String str, int k) {
+        int windowStart = 0;
+        int currentLength = 0;
+        int maxLength = 0;
+        char lastChar;
+        char firstChar;
+        
+        HashMap<Character, Integer> strHash = new HashMap<Character, Integer>();
+
+        for(int windowEnd = 0; windowEnd < str.length(); windowEnd++){
+            lastChar = str.charAt(windowEnd);
+
+            if(strHash.containsKey(lastChar)){
+                strHash.put(lastChar, strHash.get(lastChar) + 1);
+            } else{
+                while(strHash.size() == k){
+                    firstChar = str.charAt(windowStart);
+                    strHash.put(firstChar, strHash.get(firstChar) - 1);
+
+                    if(strHash.get(firstChar) == 0){
+                        strHash.remove(firstChar);
+                    };
+
+                    maxLength = Math.max(currentLength, maxLength);
+                    currentLength--;
+                    windowStart++;
+                };
+
+                strHash.put(lastChar, 1);
+            };
+
+            maxLength = Math.max(currentLength, maxLength);
+            currentLength++;
         };
 
         return maxLength;
