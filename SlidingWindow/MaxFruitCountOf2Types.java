@@ -33,6 +33,36 @@ public class MaxFruitCountOf2Types {
 
         return maxLength;
     };
+
+    public static int findLength2(char[] arr) {
+        int maxLength = 0;
+        int windowStart = 0;
+        char leftChar;
+        char rightChar;
+
+        HashMap<Character, Integer> fruitBasket = new HashMap<Character, Integer>();
+
+        for(int windowEnd = 0; windowEnd < arr.length; windowEnd++){
+            rightChar = arr[windowEnd];
+
+            fruitBasket.put(rightChar, fruitBasket.getOrDefault(rightChar, 0) + 1);
+            maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+            
+            while(fruitBasket.size() > 2){
+                leftChar = arr[windowStart];
+                fruitBasket.put(leftChar, fruitBasket.get(leftChar) - 1);
+
+                if(fruitBasket.get(leftChar) == 0){
+                    fruitBasket.remove(leftChar);
+                };
+
+                maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+                windowStart++;
+            };
+        };
+
+        return maxLength;
+    };
 };
 
 // System.out.println("Maximum number of fruits: " + 
