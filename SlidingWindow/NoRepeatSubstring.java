@@ -21,6 +21,36 @@ public class NoRepeatSubstring {
 
         return maxLength;
     };
+
+    public static int findLength2(String str) {
+        int maxLength = 0;
+        int windowStart = 0;
+        char leftChar;
+        char rightChar;
+
+        HashMap<Character, Integer> charHash = new HashMap<Character, Integer>();
+
+        for(int windowEnd = 0; windowEnd < str.length(); windowEnd++){
+            rightChar = str.charAt(windowEnd);
+
+            charHash.put(rightChar, charHash.getOrDefault(rightChar, 0) + 1);
+
+            while(charHash.get(rightChar) > 1){
+                leftChar = str.charAt(windowStart);
+                charHash.put(leftChar, charHash.get(leftChar) - 1);
+
+                if(charHash.get(leftChar) == 0){
+                    charHash.remove(leftChar);
+                };
+
+                windowStart++;
+            };
+
+            maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+        };
+
+        return maxLength;
+    };
 };
 
 // System.out.println("Length of the longest substring: " + NoRepeatSubstring.findLength("aabccbb"));
