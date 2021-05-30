@@ -52,6 +52,41 @@ public class CharacterReplacement {
 
         return maxLength;
     };
+
+    public static int findLength2(String str, int k) {
+        int maxLength = 0;
+        int windowStart = 0;
+        int maxLengthRepeating = 0;
+        char leftChar;
+        char rightChar;
+
+        HashMap<Character, Integer> charHash = new HashMap<Character, Integer>();
+
+        for(int windowEnd = 0; windowEnd < str.length(); windowEnd++){
+            rightChar = str.charAt(windowEnd);
+
+            charHash.put(rightChar, charHash.getOrDefault(rightChar, 0) + 1);
+            maxLengthRepeating = Math.max(maxLengthRepeating, charHash.get(rightChar));
+
+            // if(charHash.size() > k){
+            //     leftChar = str.charAt(windowStart);
+            //     windowStart = Math.max(windowStart, charHash.get(rightChar) + 1);
+
+            //     charHash.remove(leftChar);
+            // };
+            
+            if((windowEnd - windowStart) + 1 - maxLengthRepeating > k){ // If this is greater than k, then we cannot replace all the chars. Shrink window
+                leftChar = str.charAt(windowStart);
+
+                charHash.put(leftChar, charHash.get(leftChar) - 1);
+                windowStart++;
+            };
+
+            maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+        };
+
+        return maxLength;
+    };
 };
 
 // System.out.println(CharacterReplacement.findLength1("aabccbb", 2));
