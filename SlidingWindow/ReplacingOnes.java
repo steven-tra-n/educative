@@ -49,6 +49,29 @@ public class ReplacingOnes {
 
         return maxLength;
     };
+    
+    public static int findLength2(int[] arr, int k) {
+        int maxLength = 0;
+        int onesCount = 0;
+        int windowStart = 0;
+
+        for(int windowEnd = 0; windowEnd < arr.length; windowEnd++){
+            if(arr[windowEnd] == 1){
+                onesCount++;
+            };
+
+            if(windowEnd - windowStart + 1 - onesCount > k){ // Too many 0s
+                if(arr[windowStart] == 1){
+                    onesCount--;
+                };
+                windowStart++;
+            };
+
+            maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+        };
+
+        return maxLength;
+    };
 };
 
 // System.out.println(ReplacingOnes.findLength1(new int[] { 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1 }, 2));
