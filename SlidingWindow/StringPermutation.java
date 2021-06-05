@@ -76,6 +76,52 @@ public class StringPermutation {
 
         return false;
     };
+
+    public static boolean findPermutation2(String str, String pattern) {
+        int windowStart = 0;
+        char leftChar;
+        char rightChar;
+        int matched = 0;
+
+        HashMap<Character, Integer> patternHash = new HashMap<Character, Integer>();
+
+        for(int i = 0; i < pattern.length(); i++){
+            rightChar = pattern.charAt(i);
+
+            patternHash.put(rightChar, patternHash.getOrDefault(rightChar, 0) + 1);
+        };
+
+        for(int windowEnd = 0; windowEnd < str.length(); windowEnd++){
+            rightChar = str.charAt(windowEnd);
+
+            if(patternHash.containsKey(rightChar)){ 
+                patternHash.put(rightChar, patternHash.get(rightChar) - 1);
+
+                if(patternHash.get(rightChar) == 0){
+                    matched++;
+                };
+            };
+
+            if(matched == patternHash.size()){
+                return true;
+            };
+
+            if(windowEnd >= pattern.length() - 1){
+                leftChar = str.charAt(windowStart);
+
+                if(patternHash.containsKey(leftChar)){
+                    if(patternHash.get(leftChar) == 0){
+                        matched--;
+                    };
+                    patternHash.put(leftChar, patternHash.get(leftChar) + 1);
+                };
+
+                windowStart++;
+            };
+        };
+
+        return false;
+    };
 };
 
 // System.out.println("Permutation exist: " + StringPermutation.findPermutation1("oidbcaf", "abc"));
