@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
 public class StringAnagrams {
     public static List<Integer> findStringAnagrams(String str, String pattern) {
         int windowStart = 0;
@@ -48,6 +49,52 @@ public class StringAnagrams {
         };
 
         return resultIndices;
+      };
+
+      public static List<Integer> findStringAnagrams2(String str, String pattern) {
+          int windowStart = 0;
+          int matched = 0;
+          char leftChar;
+          char rightChar;
+
+          HashMap<Character, Integer> patternHash = new HashMap<Character, Integer>();
+          List<Integer> resultIndices = new ArrayList<Integer>();
+
+          for (char c : pattern.toCharArray()) { // Populate hash
+              patternHash.put(c, patternHash.getOrDefault(c, 0) + 1);
+          };
+
+          for(int windowEnd = 0; windowEnd < str.length(); windowEnd++){ // Iterate str
+              rightChar = str.charAt(windowEnd);
+
+              if(patternHash.containsKey(rightChar)){ // Decrement hash
+                  patternHash.put(rightChar, patternHash.get(rightChar) - 1);
+
+                  if(patternHash.get(rightChar) == 0){ // Letter match. Increment count
+                      matched++;
+                  };
+              };
+
+              if(matched == patternHash.size()){ // Full match, add index
+                  resultIndices.add(windowStart);
+              };
+
+              if(windowEnd >= pattern.length() - 1){ // Window exceeds pattern length. Shrink
+                  leftChar = str.charAt(windowStart);
+
+                  if(patternHash.containsKey(leftChar)){ // Pop back in char. Decrement count. Increment window
+                      if(patternHash.get(leftChar) == 0){ 
+                          matched--;
+                      };
+
+                      patternHash.put(leftChar, patternHash.get(leftChar) + 1);
+                  };
+
+                  windowStart++;
+              };
+          };
+
+          return resultIndices;
       };
 };
 
