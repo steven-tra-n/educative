@@ -85,35 +85,35 @@ public class StringPermutation {
 
         HashMap<Character, Integer> patternHash = new HashMap<Character, Integer>();
 
-        for(int i = 0; i < pattern.length(); i++){
+        for(int i = 0; i < pattern.length(); i++){ // Populate hash
             rightChar = pattern.charAt(i);
 
             patternHash.put(rightChar, patternHash.getOrDefault(rightChar, 0) + 1);
         };
 
-        for(int windowEnd = 0; windowEnd < str.length(); windowEnd++){
+        for(int windowEnd = 0; windowEnd < str.length(); windowEnd++){ // Iterate through
             rightChar = str.charAt(windowEnd);
 
             if(patternHash.containsKey(rightChar)){ 
-                patternHash.put(rightChar, patternHash.get(rightChar) - 1);
+                patternHash.put(rightChar, patternHash.get(rightChar) - 1); // Decrement exisiting hash
 
-                if(patternHash.get(rightChar) == 0){
+                if(patternHash.get(rightChar) == 0){ // Letter was matched, increment counter
                     matched++;
                 };
             };
 
-            if(matched == patternHash.size()){
+            if(matched == patternHash.size()){ // Hash was matched
                 return true;
             };
 
-            if(windowEnd >= pattern.length() - 1){
+            if(windowEnd >= pattern.length() - 1){ // Size of window is already bigger than length of pattern. Shrink window
                 leftChar = str.charAt(windowStart);
 
                 if(patternHash.containsKey(leftChar)){
-                    if(patternHash.get(leftChar) == 0){
+                    if(patternHash.get(leftChar) == 0){ // Check if this letter was already matched
                         matched--;
                     };
-                    patternHash.put(leftChar, patternHash.get(leftChar) + 1);
+                    patternHash.put(leftChar, patternHash.get(leftChar) + 1); // Put letter back in hash
                 };
 
                 windowStart++;
