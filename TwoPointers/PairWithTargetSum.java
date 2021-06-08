@@ -34,6 +34,26 @@ public class PairWithTargetSum {
 
         return new int[] {-1, -1};
     };
+    
+    public static int[] search2(int[] arr, int targetSum) {
+        int firstPointer = 0;
+        int lastPointer = arr.length - 1;
+        int sum;
+
+        while(firstPointer < lastPointer){
+            sum = arr[firstPointer] + arr[lastPointer];
+
+            if(sum == targetSum){
+                return new int[] {firstPointer, lastPointer};
+            } else if(sum > targetSum){
+                lastPointer--;
+            } else{
+                firstPointer++;
+            };
+        };
+
+        return new int[] {-1, -1};
+    };
 };
 
 // int[] result = PairWithTargetSum.search1(new int[] { 1, 2, 3, 4, 6 }, 6);
