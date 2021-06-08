@@ -54,6 +54,20 @@ public class PairWithTargetSum {
 
         return new int[] {-1, -1};
     };
+    
+    public static int[] search3(int[] arr, int targetSum) {
+        HashMap<Integer, Integer> arrHash = new HashMap<Integer, Integer>();
+
+        for(int i = 0; i < arr.length; i++){
+            if(arrHash.containsKey(targetSum - arr[i])){
+                return new int[] {arrHash.get(targetSum - arr[i]), i};
+            };
+
+            arrHash.put(arr[i], i);
+        };
+
+        return new int[] {-1, -1};
+    };
 };
 
 // int[] result = PairWithTargetSum.search1(new int[] { 1, 2, 3, 4, 6 }, 6);
