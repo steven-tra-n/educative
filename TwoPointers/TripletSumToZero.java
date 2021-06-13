@@ -48,6 +48,50 @@ public class TripletSumToZero {
             };
         };
     };
+
+    public static List<List<Integer>> searchTriplets2(int[] arr) {
+        List<List<Integer>> triplets = new ArrayList<>();
+        int left;
+        int right;
+
+        Arrays.sort(arr);
+
+        for(int i = 0; i < arr.length; i++){
+            if(i > 0 && arr[i] == arr[i - 1]){ // Skip dupes
+                continue;
+            };
+
+            left = i + 1;
+            right = arr.length - 1;
+            int currentSum;
+
+            while(left < right){
+                currentSum = arr[left] + arr[right];
+
+                if(arr[left] + arr[right] == -arr[i]){
+                    triplets.add(Arrays.asList(arr[i], arr[left], arr[right]));
+
+                    left++;
+                    right--;
+
+                    while(arr[left] == arr[left - 1]){ // Skip dupes
+                        left++;
+                    };
+
+                    while(arr[right] == arr[right + 1]){
+                        right--;
+                    };
+
+                } else if(currentSum > -arr[i]){
+                    right--;
+                } else{
+                    left++;
+                };
+            };
+        };
+        
+        return triplets;
+    };
 };
 
 // System.out.println(TripletSumToZero.searchTriplets(new int[] { -3, 0, 1, 2, -1, 1, -2 }));
