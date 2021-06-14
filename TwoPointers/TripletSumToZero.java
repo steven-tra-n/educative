@@ -69,9 +69,9 @@ public class TripletSumToZero {
                 currentSum = arr[left] + arr[right];
 
                 if(arr[left] + arr[right] == -arr[i]){
-                    triplets.add(Arrays.asList(arr[i], arr[left], arr[right]));
+                    triplets.add(Arrays.asList(arr[i], arr[left], arr[right])); // Triplet found
 
-                    left++;
+                    left++; // Move both pointers along
                     right--;
 
                     while(arr[left] == arr[left - 1]){ // Skip dupes
@@ -83,7 +83,7 @@ public class TripletSumToZero {
                     };
 
                 } else if(currentSum > -arr[i]){
-                    right--;
+                    right--; // Sum too much. Find smaller sum by decrementing right pointer
                 } else{
                     left++;
                 };
