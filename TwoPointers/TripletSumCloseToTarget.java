@@ -31,6 +31,33 @@ public class TripletSumCloseToTarget {
 
         return result;
     };
+
+    public static int searchTriplet2(int[] arr, int targetSum) {
+        int result = Integer.MIN_VALUE;
+        int currentSum;
+        
+        Arrays.sort(arr);
+
+        for(int i = 0; i < arr.length; i++){
+            int left = i + 1;
+            int right = arr.length - 1;
+
+            while(left < right){
+                currentSum = arr[i] + arr[left] + arr[right];
+
+                if(currentSum == targetSum){
+                    return currentSum;
+                } else if(currentSum > result && currentSum < targetSum){ // Need bigger sum
+                    result = currentSum;
+                    left++;
+                } else{
+                    right--;
+                }
+            };
+        };
+
+        return result;
+    };
 };
 
 // System.out.println(TripletSumCloseToTarget.searchTriplet(new int[] { -2, 0, 1, 2 }, 2));
