@@ -21,6 +21,30 @@ public class SubarrayProductLessThanK {
         
         return result;
     };
+
+    public static List<List<Integer>> findSubarrays2(int[] arr, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        int product = 1;
+        int left = 0;
+
+        for(int right = 0; right < arr.length; right++){
+            product *= arr[right];
+
+            while(product >= target && left < arr.length){
+                product /= arr[left];
+                left++;
+            };
+
+            List<Integer> tempList = new LinkedList<>();
+            for(int i = right; i >= left; i--){
+                tempList.add(0, arr[i]);
+                result.add(new ArrayList<>(tempList));
+            };
+        }
+        
+        return result;
+    };
 };
 
 // System.out.println(SubarrayProductLessThanK.findSubarrays(new int[] { 2, 5, 3, 10 }, 30));
