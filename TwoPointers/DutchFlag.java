@@ -27,6 +27,52 @@ public class DutchFlag {
         arr[a] = arr[b];
         arr[b] = placeHolder;
     };
+
+    public static void sort2(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+        int index = 0;
+
+        while(index <= end && start < end){
+            if(arr[index] == 0){
+                arr[index] = arr[start];
+                arr[start] = 0;
+
+                start++;
+                index++;
+            } else if(arr[index] == 2){
+                arr[index] = arr[end];
+                arr[end] = 2;
+                end--;
+            } else{
+                index++;
+            };
+        };
+    };
+
+    public static void sort3(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+        int index = 0;
+
+        while(index < end && start < end){
+            if(arr[index] == 0){
+                arr[index] = arr[start];
+                arr[start] = 0;
+
+                start++;
+                index++;
+            } else if(arr[index] == 2){
+                arr[index] = arr[end];
+                arr[end] = 2;
+                
+                end--;
+                // index++;
+            } else{
+                index++;
+            };
+        };
+    };
 };
 
 // int[] arr = new int[] { 1, 0, 2, 1, 0 };

@@ -16,6 +16,24 @@ public class LinkedListCycle {
 
       return false;
     };
+
+    public static int hasCycle2(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        int counter = 0;
+
+        while(fast != null && fast.next != null){
+          fast = fast.next.next;
+          slow = slow.next;
+          counter++;
+
+          if(fast == slow){
+            return counter;
+          };
+        };
+  
+        return counter;
+      };
 };
 
 // ListNode head = new ListNode(1);
