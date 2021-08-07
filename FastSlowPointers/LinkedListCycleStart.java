@@ -35,6 +35,40 @@ public class LinkedListCycleStart {
 
         return slow;
     };
+
+    public static ListNode findCycleStart2(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        int counter = 0;
+
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+
+            if(fast == slow){ // Found intersection, start counting
+                break;
+            };  
+        };
+
+        do{
+            slow = slow.next;
+            counter++;
+        } while(fast != slow); // Count until next intersection
+
+        fast = head;
+        slow = head;
+
+        for(int i = 0; i < counter; i++){
+            fast = fast.next;
+        };
+
+        while(fast != slow){
+            fast = fast.next;
+            slow = slow.next;
+        };
+
+        return slow;
+    };
 };
 
 // ListNode head = new ListNode(1);
