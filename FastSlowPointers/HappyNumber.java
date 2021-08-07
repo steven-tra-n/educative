@@ -28,6 +28,32 @@ public class HappyNumber {
 
         return sum;
     };
+
+    public static boolean find2(int num) {
+        int fast = num;
+        int slow = num;
+
+        do{
+            fast = findSquareSum2(fast);
+            fast = findSquareSum2(fast);
+            slow = findSquareSum2(slow);
+        } while(fast != slow);
+
+        return slow == 1;
+    };
+
+    private static int findSquareSum2(int num){
+        int sum = 0;
+        int digit;
+
+        while(num > 0){
+            digit = num % 10;
+            sum += digit * digit;
+            num /= 10;
+        };
+
+        return sum;
+    };
 };
 
 // System.out.println(HappyNumber.find(23));
