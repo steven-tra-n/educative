@@ -11,6 +11,26 @@ public class MiddleOfLinkedList {
 
         return slow;
     };
+
+    public static ListNode findMiddle2(ListNode head) {
+        ListNode slow = head, fast = head;
+        int counter = 0;
+
+        while(fast != null && fast.next != null){
+            fast = fast.next;
+            counter++;
+        };
+
+        for(int i = 0; i < counter / 2; i++){
+            slow = slow.next;
+        };
+
+        if(counter % 2 != 0){
+            slow = slow.next;
+        };
+
+        return slow;
+    };
 };
 
 // ListNode head = new ListNode(1);
