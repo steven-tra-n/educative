@@ -37,6 +37,39 @@ public class MergeIntervals {
 
         return mergedIntervals;
     };
+
+    public static List<Interval> merge2(List<Interval> intervals) {
+        List<Interval> mergedInterval = new LinkedList<Interval>();
+
+        if(intervals.size() == 1){
+            return intervals;
+        };
+
+        Collections.sort(intervals, (a, b) -> Integer.compare(a.start, b.start));
+
+        Iterator<Interval> intervalIterator = intervals.iterator();     
+        Interval interval = intervalIterator.next();
+
+        int start = interval.start;
+        int end = interval.end;
+
+        while(intervalIterator.hasNext()){
+            interval = intervalIterator.next();
+
+            if(interval.start <= end){
+                end = Integer.max(end, interval.end);
+            } else{
+                mergedInterval.add(new Interval(start, end));
+
+                start = interval.start;
+                end = interval.end;
+            };
+        };
+
+        mergedInterval.add(new Interval(start, end));
+
+        return mergedInterval;
+    };
 };
 
 // List<Interval> input = new ArrayList<Interval>();
