@@ -41,7 +41,7 @@ public class MergeIntervals {
     public static List<Interval> merge2(List<Interval> intervals) {
         List<Interval> mergedInterval = new LinkedList<Interval>();
 
-        if(intervals.size() == 1){
+        if(intervals.size() <= 1){
             return intervals;
         };
 
