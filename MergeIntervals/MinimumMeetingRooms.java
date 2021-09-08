@@ -67,6 +67,25 @@ public class MinimumMeetingRooms {
 
         return minRooms;
     };
+
+    public static int findMinimumMeetingRooms3(List<Meeting> meetings) {
+        if(meetings == null || meetings.size() == 1){
+            return 0;
+        };
+
+        Collections.sort(meetings, (a, b) -> Integer.compare(a.start, b.start));
+
+        int roomCount = 1; // Start with one room
+
+        for(int i = 1; i < meetings.size(); i ++){
+            if(meetings.get(i).start < meetings.get(i - 1).end){ // Meeting clash, need another room
+                roomCount++;
+                i = i + 2; // Only one room per two meetings
+            };
+        };
+
+        return roomCount;
+    };
 };
 
 // List<Meeting> input = new ArrayList<Meeting>() {
