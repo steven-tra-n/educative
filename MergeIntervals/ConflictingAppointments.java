@@ -13,6 +13,18 @@ public class ConflictingAppointments {
         };
         
         return true;
+    };
+
+    public static boolean canAttendAllAppointments2(Interval[] intervals) {
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a.start, b.start));
+
+        for(int i = 1; i < intervals.length; i++){
+            if(intervals[i].start <= intervals[i - 1].end){ // Only conflicts if i starts before i - 1 ends
+                return false;
+            };
+        };
+
+        return true;
     };  
 };
 
