@@ -1,6 +1,8 @@
 package MergeIntervals;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ConflictingAppointments {
     public static boolean canAttendAllAppointments(Interval[] intervals) {
@@ -21,6 +23,20 @@ public class ConflictingAppointments {
         for(int i = 1; i < intervals.length; i++){
             if(intervals[i].start <= intervals[i - 1].end){ // Only conflicts if i starts before i - 1 ends
                 return false;
+            };
+        };
+
+        return true;
+    };  
+
+    public static boolean findAllConflictingAppointments(Interval[] intervals) {
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a.start, b.start));
+        List<Interval> result = new ArrayList<>();
+
+        for(int i = 1; i < intervals.length; i++){
+            if(intervals[i].start < intervals[i - 1].end){
+                result.add(new Interval(intervals[i - 1].start, intervals[i - 1].end));
+                result.add(new Interval(intervals[i].start, intervals[i].end));
             };
         };
 
