@@ -86,6 +86,32 @@ public class MinimumMeetingRooms {
 
         return roomCount;
     };
+
+    public static int findMinimumMeetingRooms4(List<Meeting> meetings) {
+        int roomsNeeded = 0;
+
+        if(meetings == null || meetings.size() == 1){
+            return roomsNeeded;
+        };
+
+        Collections.sort(meetings, (a, b) -> Integer.compare(a.start, b.start));
+        
+        PriorityQueue<Meeting> minHeap = new PriorityQueue<>(meetings.size(), (a, b) -> Integer.compare(a.end, b.end));
+
+
+        for(int i = 0; i < meetings.size(); i++){
+            // Keep adding meetings into priority queue. If we find an iteration that has a start time later than the smallest end time, they can use the same room
+            while(!minHeap.isEmpty() && meetings.get(i).start >= minHeap.peek().end){ 
+                minHeap.remove();
+            };
+
+            minHeap.add(meetings.get(i));
+
+            roomsNeeded = Math.max(roomsNeeded, minHeap.size());
+        };
+
+        return roomsNeeded;
+    };
 };
 
 // List<Meeting> input = new ArrayList<Meeting>() {
