@@ -88,10 +88,8 @@ public class MinimumMeetingRooms {
     };
 
     public static int findMinimumMeetingRooms4(List<Meeting> meetings) {
-        int roomsNeeded = 0;
-
         if(meetings == null || meetings.size() == 1){
-            return roomsNeeded;
+            return 0;
         };
 
         Collections.sort(meetings, (a, b) -> Integer.compare(a.start, b.start));
@@ -106,11 +104,9 @@ public class MinimumMeetingRooms {
             };
 
             minHeap.add(meetings.get(i));
-
-            roomsNeeded = Math.max(roomsNeeded, minHeap.size());
         };
 
-        return roomsNeeded;
+        return minHeap.size();
     };
 };
 

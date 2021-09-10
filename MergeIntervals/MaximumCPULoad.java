@@ -29,6 +29,31 @@ public class MaximumCPULoad {
 
         return maxLoad;
     };
+
+    public static int findMaxCPULoad2(List<Job> jobs) {
+        int maxLoad = 0;
+        int currentLoad = 0;
+
+        if(jobs == null || jobs.size() == 0){
+            return -1;
+        };
+
+        Collections.sort(jobs, (a, b) -> Integer.compare(a.start, b.start));
+
+        PriorityQueue<Job> priorityJobs = new PriorityQueue<>(jobs.size(), (a, b) -> Integer.compare(a.end, b.end));
+
+        for(int i = 0; i < jobs.size(); i++){
+            while(!priorityJobs.isEmpty() && jobs.get(i).start >= priorityJobs.peek().end){
+                currentLoad -= priorityJobs.poll().cpuLoad;
+            };
+
+            priorityJobs.add(jobs.get(i));
+            currentLoad += jobs.get(i).cpuLoad;
+            maxLoad = Integer.max(maxLoad, currentLoad);
+        };
+
+        return maxLoad;
+    };
 };
 
 // List<Job> input = new ArrayList<Job>(Arrays.asList(new Job(1, 4, 3), new Job(2, 5, 4), new Job(7, 9, 6)));
