@@ -24,6 +24,24 @@ public class FindDuplicate {
         return -1;
     };
 
+    public static int findNumber2(int[] nums){
+        int i = 0;
+
+        while(i < nums.length){
+            if(i != nums[i] - 1){ // Index does not match value
+                if(nums[i] != nums[nums[i] - 1]){ // Value does not match
+                    swap(nums, i, nums[i] - 1);
+                } else{
+                    return nums[i];
+                };
+            } else{
+                i++;
+            };
+        };
+
+        return -1;
+    };
+
     public static void swap(int[] arr, int i, int j){
         int temp = arr[i];
         arr[i] = arr[j];
