@@ -18,7 +18,7 @@ public class ReverseSubList {
         };
 
         ListNode connection = previous; // Store before reversing
-        ListNode tail = current;
+        ListNode tail = current; 
 
         for(int i = p; current != null && i < q + 1; i++){
             next = current.next; // Temporary next
