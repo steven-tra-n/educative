@@ -27,10 +27,10 @@ public class ReverseEveryKElementsAlternate {
 
             tail.next = current; // Set next node for end of new sub list to start of new new sub list
 
-            previous = tail; // Set new end of old sub list
+            // previous = tail; // Set new end of old sub list
 
-            connection = previous;
-            tail = current;
+            // connection = previous;
+            // tail = current;
 
             for(int i = 0; current != null && i < k; i++){
                 previous = current;
