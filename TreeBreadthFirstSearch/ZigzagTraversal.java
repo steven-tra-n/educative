@@ -13,7 +13,7 @@ public class ZigzagTraversal {
         Queue<TreeNode> queue = new LinkedList<>();
         TreeNode currentNode;
         int currentLevelSize;
-        boolean zigZag = false;
+        boolean zigZag = false; 
 
         queue.add(root);
 
@@ -24,7 +24,7 @@ public class ZigzagTraversal {
             for(int i = 0; i < currentLevelSize; i++){
                 currentNode = queue.remove();
 
-                if(zigZag){
+                if(zigZag){ // Alternate reversal
                     currentLevel.add(0, currentNode.val);
                 } else{
                     currentLevel.add(currentNode.val);
