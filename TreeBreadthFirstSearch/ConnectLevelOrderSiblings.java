@@ -29,10 +29,10 @@ public class ConnectLevelOrderSiblings {
                     queue.offer(currentNode.right);
                 };
 
-                if(i + 1 == currentLevelSize){
-                    currentNode.next = null;
+                if(i + 1 == currentLevelSize){ // Reached end of level
+                    currentNode.next = null; 
                 } else{
-                    currentNode.next = queue.peek();
+                    currentNode.next = queue.peek(); // Attach to next level node
                 };
             };
         };
