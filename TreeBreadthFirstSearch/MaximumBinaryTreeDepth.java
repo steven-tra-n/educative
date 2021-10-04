@@ -2,32 +2,27 @@ package TreeBreadthFirstSearch;
 
 import java.util.*;
 
-public class MinimumBinaryTreeDepth {
+public class MaximumBinaryTreeDepth {
     public static int findDepth(TreeNode root) {
-        int minDepth = 0;
-
         if(root == null){
-            return minDepth;
+            return -1;
         };
 
         Queue<TreeNode> queue = new LinkedList<>();
         TreeNode currentNode;
         int currentLevelSize;
+        int maxDepth = 0;
 
         queue.add(root);
 
         while(!queue.isEmpty()){
             currentLevelSize = queue.size();
-            minDepth++;
+            maxDepth++;
 
             for(int i = 0; i < currentLevelSize; i++){
                 currentNode = queue.remove();
 
-                if(currentNode.left == null && currentNode.right == null){
-                    return minDepth; // The first time both left and right nodes will be the minimum
-                };
-
-                if(currentNode.left!= null){
+                if(currentNode.left != null){
                     queue.add(currentNode.left);
                 };
 
@@ -37,7 +32,7 @@ public class MinimumBinaryTreeDepth {
             };
         };
 
-        return minDepth;
+        return maxDepth;
     };
 };
 
@@ -46,7 +41,7 @@ public class MinimumBinaryTreeDepth {
 //     root.right = new TreeNode(1);
 //     root.right.left = new TreeNode(10);
 //     root.right.right = new TreeNode(5);
-//     System.out.println("Tree Minimum Depth: " + MinimumBinaryTreeDepth.findDepth(root));
+//     System.out.println("Tree Maximum Depth: " + MaximumBinaryTreeDepth.findDepth(root));
 //     root.left.left = new TreeNode(9);
 //     root.right.left.left = new TreeNode(11);
-//     System.out.println("Tree Minimum Depth: " + MinimumBinaryTreeDepth.findDepth(root));
+//     System.out.println("Tree Maximum Depth: " + MaximumBinaryTreeDepth.findDepth(root));
