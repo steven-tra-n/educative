@@ -37,28 +37,43 @@ public class ConnectLevelOrderSiblings {
             };
         };
     };
-};
 
-// // level order traversal using 'next' pointer
-// void printLevelOrder() {
-//     TreeNode nextLevelRoot = this;
-//     while (nextLevelRoot != null) {
-//       TreeNode current = nextLevelRoot;
-//       nextLevelRoot = null;
-//       while (current != null) {
-//         System.out.print(current.val + " ");
-//         if (nextLevelRoot == null) {
-//           if (current.left != null)
-//             nextLevelRoot = current.left;
-//           else if (current.right != null)
-//             nextLevelRoot = current.right;
-//         }
-//         current = current.next;
-//       }
-//       System.out.println();
-//     }
-//   }
-// };
+    public static void connect2(TreeNode root) {
+        if(root == null){
+            return;
+        };
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode currentNode;
+        TreeNode previousNode;
+        int currentLevelSize;
+
+        queue.offer(root);
+
+        while(!queue.isEmpty()){
+            currentLevelSize = queue.size();
+            previousNode = null;
+
+            for(int i = 0; i < currentLevelSize; i++){
+                currentNode = queue.poll();
+
+                if(previousNode != null){
+                    previousNode.next = currentNode; // Skip first loop since previousNode will start off null
+                };
+
+                previousNode = currentNode; // Advance previousNode. Last node of the level will point to null
+
+                if(currentNode.left != null){
+                    queue.offer(currentNode.left);
+                };
+
+                if(currentNode.right != null){
+                    queue.offer(currentNode.right);
+                };
+            };
+        };
+    };
+};
 
 // TreeNode root = new TreeNode(12);
 //     root.left = new TreeNode(7);
