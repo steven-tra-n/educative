@@ -13,7 +13,8 @@ public class FindAllTreePaths {
 
         List<Integer> currentPath = new ArrayList<>();
 
-        findPathsRecursion(root, sum, allPaths, currentPath);
+        // findPathsRecursion(root, sum, allPaths, currentPath);
+        findAllPathsRecursion(root, allPaths, currentPath);
 
         return allPaths;
     };
@@ -27,12 +28,32 @@ public class FindAllTreePaths {
 
         // Check if root is a leaf node
         if(root.val == sum && root.left == null && root.right == null){
-            allPaths.add(currentPath);
+            allPaths.add(new ArrayList<Integer>(currentPath));
+            // return;
+        } else{
+            findPathsRecursion(root.left, sum - root.val, allPaths, currentPath);
+            findPathsRecursion(root.right, sum - root.val, allPaths, currentPath);
+        };
+
+        // Must pass a new ArrayList so that we are not passing the same list
+        currentPath.remove(currentPath.size() - 1);
+    };
+
+    public static void findAllPathsRecursion(TreeNode root, List<List<Integer>> allPaths, List<Integer> currentPath){
+        if(root == null){
             return;
         };
 
-        findPathsRecursion(root.left, sum - root.val, allPaths, new ArrayList<Integer>(currentPath));
-        findPathsRecursion(root.right, sum - root.val, allPaths, new ArrayList<Integer>(currentPath));
+        currentPath.add(root.val);
+
+        if(root.left == null && root.right == null){
+            allPaths.add(new ArrayList<Integer>(currentPath));
+        } else{
+            findAllPathsRecursion(root.left, allPaths, currentPath);
+            findAllPathsRecursion(root.right, allPaths, currentPath);
+        };
+
+        currentPath.remove(currentPath.size() - 1);
     };
 };
 
