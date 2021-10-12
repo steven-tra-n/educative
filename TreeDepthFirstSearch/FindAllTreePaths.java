@@ -14,7 +14,8 @@ public class FindAllTreePaths {
         List<Integer> currentPath = new ArrayList<>();
 
         // findPathsRecursion(root, sum, allPaths, currentPath);
-        findAllPathsRecursion(root, allPaths, currentPath);
+        // findAllPathsRecursion(root, allPaths, currentPath);
+        findMaxPathNodeSum(root);
 
         return allPaths;
     };
@@ -54,6 +55,29 @@ public class FindAllTreePaths {
         };
 
         currentPath.remove(currentPath.size() - 1);
+    };
+
+    public static int max = Integer.MIN_VALUE;
+
+    public static int findMaxPathNodeSum(TreeNode root){
+        postOrderMaxPathNodeSum(root);
+
+        return max;
+    };
+
+    public static int postOrderMaxPathNodeSum(TreeNode root){
+        if(root == null){
+            return 0;
+        };
+
+        // Keep traversing until we hit leafs
+        int left = Math.max(postOrderMaxPathNodeSum(root.left), 0);
+        int right = Math.max(postOrderMaxPathNodeSum(root.right), 0);
+
+        // Check if subtree will have highest sum path
+        max = Integer.max(max, left + right + root.val);
+
+        return Integer.max(left, right) + root.val;
     };
 };
 
