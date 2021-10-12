@@ -15,7 +15,7 @@ public class FindAllTreePaths {
 
         // findPathsRecursion(root, sum, allPaths, currentPath);
         // findAllPathsRecursion(root, allPaths, currentPath);
-        findMaxPathNodeSum(root);
+        findMaxPathTreeSum(root);
 
         return allPaths;
     };
@@ -78,6 +78,33 @@ public class FindAllTreePaths {
         max = Integer.max(max, left + right + root.val);
 
         return Integer.max(left, right) + root.val;
+    };
+
+    public static int treeMax = 0;
+    public static int treeMaxTemp = 0;
+
+    public static int findMaxPathTreeSum(TreeNode root){
+        postOrderMaxPathTreeSum(root);
+
+        return treeMax;
+    };
+
+    public static void postOrderMaxPathTreeSum(TreeNode root){
+        if(root == null){
+            return;
+        };
+
+        treeMaxTemp += root.val;
+
+        if(root.left == null && root.right == null){
+            treeMax = Integer.max(treeMax, treeMaxTemp);
+            treeMaxTemp = 0;
+
+            return;
+        } else{
+            postOrderMaxPathTreeSum(root.left);
+            postOrderMaxPathTreeSum(root.right);
+        };
     };
 };
 
