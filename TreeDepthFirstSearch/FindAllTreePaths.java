@@ -11,7 +11,7 @@ public class FindAllTreePaths {
             return allPaths;
         };
 
-        List<Integer> currentPath = new ArrayList<>();
+        // List<Integer> currentPath = new ArrayList<>();
 
         // findPathsRecursion(root, sum, allPaths, currentPath);
         // findAllPathsRecursion(root, allPaths, currentPath);
