@@ -22,11 +22,11 @@ public class TreeDiameter {
             // Diameter will be height plus current node (1)
             int currentDiameter = leftTreeHeight + rightTreeHeight + 1;
 
-            maxDiameter = Integer.max(maxDiameter, currentDiameter);
+            maxDiameter = Math.max(maxDiameter, currentDiameter);
         };
 
         // Return the higher tree branch
-        return Integer.max(leftTreeHeight, rightTreeHeight) + 1;
+        return Math.max(leftTreeHeight, rightTreeHeight) + 1;
     };
 };
 
