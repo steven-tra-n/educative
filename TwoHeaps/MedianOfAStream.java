@@ -14,21 +14,20 @@ public class MedianOfAStream {
 
     public void insertNum(int num){
         // Add by default to minHeap
-        minHeap.add(num);
-        
-        checkSizing();
+        addToMinHeap(num);
         checkLengths();
     };
 
-    public void checkSizing(){
-        // minHeap has an element that isn't less than or equal to maxHeap
-        if(maxHeap.size() > 0 && minHeap.peek() > maxHeap.peek()){
-            maxHeap.add(minHeap.poll());
+    public void addToMinHeap(int num){
+        if(minHeap.size() == 0 || num < minHeap.peek()){
+            minHeap.add(num);
+        } else{
+            maxHeap.add(num);
         };
     };
 
     public void checkLengths(){
-        // Heap size differences are too much
+        // minHeap has more than 1 elements, so shift it over
         if(minHeap.size() - maxHeap.size() > 1){
             maxHeap.add(minHeap.poll());
         } else if(maxHeap.size() - minHeap.size() > 1){
@@ -40,10 +39,8 @@ public class MedianOfAStream {
         // Heap sizes are the same, take the average of the first two from each
         if(minHeap.size() == maxHeap.size()){
             return (minHeap.peek() + maxHeap.peek()) / 2.0;
-        } else if(maxHeap.size() - minHeap.size() == 1){
-            return maxHeap.peek();
         } else{
-            return minHeap.peek();
+            return maxHeap.peek();
         }
     };
 };
