@@ -3,8 +3,6 @@ package TwoHeaps;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-import javax.swing.text.html.MinimalHTMLWriter;
-
 public class MaximizeCapital {
   public static int findMaximumCapital(int[] capital, int[] profits, int numberOfProjects, int initialCapital)  {
       if(numberOfProjects <= 0){
