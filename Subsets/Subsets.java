@@ -26,6 +26,24 @@ public class Subsets {
 
         return subsets;
     };
+
+    public static List<List<Integer>> findSubsets2(int[] nums){
+        List<List<Integer>> subsets = new ArrayList<>();
+
+        findSubsetsRecursion(nums, 0, new ArrayList<>(), subsets);
+
+        return subsets;
+    };
+
+    private static void findSubsetsRecursion(int[] nums, int index, List<Integer> set, List<List<Integer>> subsets){
+        subsets.add(new ArrayList<>(set));
+
+        for(int i = index; i < nums.length; i++){
+            set.add(nums[i]);
+            findSubsetsRecursion(nums, i + 1, set, subsets);
+            set.remove(set.size() - 1);
+        };
+    };
 };
 
 // List<List<Integer>> result = Subsets.findSubsets(new int[] { 1, 3 });
