@@ -1,6 +1,7 @@
 package Subsets;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SubsetWithDuplicates {
@@ -36,6 +37,33 @@ public class SubsetWithDuplicates {
           };
 
           return subsets;
+      };
+
+      public static List<List<Integer>> findSubsets2(int[] nums){
+          List<List<Integer>> subsets = new ArrayList<>();
+
+          Arrays.sort(nums);
+          findSubsetsRecursive(nums, 0, new ArrayList<>(), subsets);
+
+          return subsets;
+      };
+
+      private static void findSubsetsRecursive(int[] nums, int index, List<Integer> set, List<List<Integer>> subsets){
+          subsets.add(new ArrayList<>(set));
+
+          for(int i = index; i < nums.length; i++){
+              // Don't add the set in case of duplicates
+              if(i > index && nums[i] == nums[i - 1]){
+                  continue;
+              };
+
+              // Add to current set
+              set.add(nums[i]);
+              // Travel to leaf nodes
+              findSubsetsRecursive(nums, i + 1, set, subsets);
+              // Backtrack
+              set.remove(set.size() -1);
+          };
       };
 };
 
