@@ -21,19 +21,23 @@ public class LetterCaseStringPermutation {
         char[] strChars = str.toCharArray();
 
         for(int i = index; i < str.length(); i++){
-            if(Character.isAlphabetic(strChars[i])){
-                if(Character.isUpperCase(strChars[i])){
-                    strChars[i] = Character.toLowerCase(strChars[i]);
-                    result.add(String.valueOf(strChars));
-                    recursion(str, i + 1, result);
-                    // No need to backtrack
-                    // strChars[i] = Character.toUpperCase(strChars[i]);
-                } else{
-                    strChars[i] = Character.toUpperCase(strChars[i]);
-                    result.add(String.valueOf(strChars));
-                    recursion(str, i + 1, result);
-                    // strChars[i] = Character.toLowerCase(strChars[i]);
-                };
+            processChar(strChars[i], strChars, str, i, result);
+        };
+    };
+
+    private static void processChar(char c, char[] strChars, String str, int i, List<String> result){
+        if(Character.isAlphabetic(c)){
+            if(Character.isUpperCase(c)){
+                c = Character.toLowerCase(c);
+                result.add(String.valueOf(strChars));
+                recursion(str, i + 1, result);
+                // No need to backtrack
+                // strChars[i] = Character.toUpperCase(strChars[i]);
+            } else{
+                strChars[i] = Character.toUpperCase(strChars[i]);
+                result.add(String.valueOf(strChars));
+                recursion(str, i + 1, result);
+                // strChars[i] = Character.toLowerCase(strChars[i]);
             };
         };
     };
