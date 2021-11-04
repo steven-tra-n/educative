@@ -31,6 +31,7 @@ public class FindRange {
             } else{
                 keyIndex = mid;
 
+                
                 if(isFirstPosition){
                     end = mid - 1;
                 } else{
