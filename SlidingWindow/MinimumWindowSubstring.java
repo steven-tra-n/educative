@@ -60,7 +60,7 @@ public class MinimumWindowSubstring {
         char rightChar;
 
         HashMap<Character, Integer> patternHash = new HashMap<Character, Integer>();
-        StringBuilder resultString = new StringBuilder();
+        // StringBuilder resultString = new StringBuilder();
 
         for (char c : pattern.toCharArray()) { // Populate hash
             patternHash.put(c, patternHash.getOrDefault(c, 0) + 1);    

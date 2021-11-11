@@ -5,8 +5,8 @@ public class RemoveDuplicates {
         int nextNonDuplicate = 1;
 
         for(int i = 1; i < arr.length; i++){
-            int leftNum = arr[nextNonDuplicate - 1];
-            int rightNum = arr[i];
+            // int leftNum = arr[nextNonDuplicate - 1];
+            // int rightNum = arr[i];
 
             if(arr[nextNonDuplicate - 1] != arr[i]){
                 arr[nextNonDuplicate] = arr[i];
