@@ -17,8 +17,7 @@ public class KLargestNumbers {
 
         // return result;
 
-        PriorityQueue<Integer> minHeap;
-        minHeap = new PriorityQueue<>((n1, n2) -> n1 - n2);
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>((n1, n2) -> n1 - n2);
 
         // Add k nums to the heap
         for(int i = 0; i < k; i++){
