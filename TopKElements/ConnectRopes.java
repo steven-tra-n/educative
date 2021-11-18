@@ -1,6 +1,5 @@
 package TopKElements;
 
-import java.util.Iterator;
 import java.util.PriorityQueue;
 
 public class ConnectRopes {
