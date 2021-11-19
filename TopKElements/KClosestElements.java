@@ -43,7 +43,7 @@ public class KClosestElements {
         start = Math.max(start, 0);
         end = Math.min(end, arr.length - 1);
 
-        for(int i = start; i < end; i++){
+        for(int i = start; i <= end; i++){
             if(minHeap.size() < k){
                 minHeap.offer(arr[i]);
             } else{
@@ -66,9 +66,10 @@ public class KClosestElements {
     private static int binarySearch(int[] arr, int target){
         int start = 0;
         int end = arr.length - 1;
+        int middle = 0;
 
         while(start <= end){
-            int middle = start + (end - start) / 2;
+            middle = start + (end - start) / 2;
 
             if(arr[middle] == target){
                 return middle;
@@ -79,7 +80,7 @@ public class KClosestElements {
             };
         };
 
-        return -1;
+        return middle;
     };
 };
 
