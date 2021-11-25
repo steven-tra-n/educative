@@ -44,7 +44,7 @@ public class RearrangeString {
             };
         };
 
-        // 3. again 
+        // 3. again
         Map.Entry<Character, Integer> character = maxHeap.poll();
         result += character.getKey();
 
