@@ -14,11 +14,17 @@ public class RearrangeStringKDistanceApart {
         // 4. Decrement the polls and append to a string
         // 5. Add them back in if their value is more than 0
         // 6. After the while loop, check if remaining heap is within k of the last k characters
+        // 7. For most efficiency, use a queue
 
         HashMap<Character, Integer> characterFrequencies = new HashMap<>();
         PriorityQueue<Map.Entry<Character, Integer>> maxHeap = new PriorityQueue<>((n1, n2) -> n2.getValue() - n1.getValue());
         List<Map.Entry<Character, Integer>> entryList = new ArrayList<>();
         String result = "";
+        
+        // Edge case
+        if(k <= 1){
+            return str;
+        };
 
         // 1.
         for(int i = 0; i < str.length(); i++){
