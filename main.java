@@ -4,8 +4,10 @@ import TopKElements.*;
 
 public class main {
     public static void main(String[] args){
-      System.out.println("Rearranged string: " + RearrangeString.rearrangeString("aappp"));
-    System.out.println("Rearranged string: " + RearrangeString.rearrangeString("Programming"));
-    System.out.println("Rearranged string: " + RearrangeString.rearrangeString("aapa"));
+      char[] tasks = new char[] { 'a', 'a', 'a', 'b', 'c', 'c' };
+    System.out.println("Minimum intervals needed to execute all tasks: " + TaskScheduler.scheduleTasks(tasks, 2));
+
+    tasks = new char[] { 'a', 'b', 'a' };
+    System.out.println("Minimum intervals needed to execute all tasks: " + TaskScheduler.scheduleTasks(tasks, 3));
     };
 };
