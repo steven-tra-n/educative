@@ -26,7 +26,7 @@ public class TaskScheduler {
         HashMap<Character, Integer> taskMap = new HashMap<>();
         PriorityQueue<Map.Entry<Character, Integer>> maxHeap = new PriorityQueue<>((c1, c2) -> c2.getValue() - c1.getValue());
         ArrayList<Map.Entry<Character, Integer>> tempEntries = new ArrayList<>();
-        int kCounter = k;
+        int kCounter = k + 1;
 
         // 2.
         for(int i = 0; i < tasks.length; i++){
@@ -47,10 +47,31 @@ public class TaskScheduler {
                 tempEntries.add(entry);
             };
 
-            if(maxHeap.isEmpty() && kCounter > 0){
-                for(int i = 0; i < k; i++){
+            kCounter--;
+            result++;
 
+            if(kCounter == 0){
+                kCounter = k + 1;
+
+                maxHeap.addAll(tempEntries);
+                tempEntries.clear();
+            };
+
+            if(maxHeap.isEmpty() && kCounter > 0 && !tempEntries.isEmpty()){
+                for(int i = kCounter; i < k + 1; i++){
+                    kCounter--;
+                    result++;
+
+                    if(kCounter <= 0){
+                        break;
+                    };
                 };
+
+                // Start re-adding entries
+                kCounter = k + 1;
+
+                maxHeap.addAll(tempEntries);
+                tempEntries.clear();
             };
         };
 
