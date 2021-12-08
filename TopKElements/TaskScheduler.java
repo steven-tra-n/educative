@@ -26,6 +26,8 @@ public class TaskScheduler {
         HashMap<Character, Integer> taskMap = new HashMap<>();
         PriorityQueue<Map.Entry<Character, Integer>> maxHeap = new PriorityQueue<>((c1, c2) -> c2.getValue() - c1.getValue());
         ArrayList<Map.Entry<Character, Integer>> tempEntries = new ArrayList<>();
+
+        // Each task needs k amount of time to cool down, so k + 1 tasks are needed before the next identical task can be ran
         int kCounter = k + 1;
 
         // 2.
@@ -62,6 +64,7 @@ public class TaskScheduler {
                     kCounter--;
                     result++;
 
+                    // Don't need to add any more idle as we have reached k tasks
                     if(kCounter <= 0){
                         break;
                     };
